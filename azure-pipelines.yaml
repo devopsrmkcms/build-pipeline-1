@@ -2,9 +2,9 @@ trigger:
 - main
 
 variables:
-  dockerRegistryServiceConnection: 'acr-connection'  # Your service connection name
-  imageRepository: 'myapp'
-  containerRegistry: 'yourregistry.azurecr.io'
+  dockerRegistryServiceConnection: 'docker-connection'  # Your service connection name
+  imageRepository: 'azbuildprojects'
+  containerRegistry: 'docker.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
 
