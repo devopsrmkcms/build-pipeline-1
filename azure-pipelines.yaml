@@ -3,7 +3,7 @@ trigger:
 
 variables:
   dockerRegistryServiceConnection: 'docker-connection'  # Your service connection name
-  imageRepository: 'azbuildprojects'
+  imageRepository: 'rmk1988/azbuildprojects'
   containerRegistry: 'docker.io'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
