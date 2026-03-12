@@ -1,17 +1,17 @@
 FROM node:18-alpine
 
-# Fix: Install git (needed for npm ci with package-lock.json)
-RUN apk add --no-cache git
+# Install git + build tools (required for some packages)
+RUN apk add --no-cache git python3 make g++
 
 WORKDIR /app
 
-# Copy package files first (for caching)
+# Copy package files
 COPY package*.json ./
 
-# Fix: Use npm install --production instead of npm ci --only=production
-RUN npm ci --omit=dev --no-audit --no-fund
+# ✅ FIXED: Use npm install with legacy peer deps
+RUN npm install --production --legacy-peer-deps --no-audit --no-fund
 
-# Copy source code
+# Copy app code
 COPY . .
 
 EXPOSE 3000
